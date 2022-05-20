@@ -1,3 +1,18 @@
+class Deck:
+    def __init__(self):
+        self.statut = "Rien"
+        self.nom = None
+
+    def empiler(self,carte):
+        self.append(carte)
+
+    def depiler(self):
+        self.cont.pop()
+
+
+
+
+
 class Carte:
     def __init__(self,couleur,valeur,symbole):
         self.couleur = Couleur.c
