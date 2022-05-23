@@ -99,6 +99,8 @@ class Deck:
         self.statut = "Rien"
         self.nom = None
         self.cont=[]
+        self.bouton = None
+        self.etiquette = None
 
     def empiler(self,carte):
         return self.cont.append(carte)
