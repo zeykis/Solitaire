@@ -89,19 +89,34 @@ class Solitaire:
     def 
            
 
+'''empiler: ajouter une carte au deck, cartetop: enlève la carte du dessus du deck et la retourne 
+couleuropp: renvoie True si la couleur de la carte du dessus du deck est la même que celle mentionnée 
+mmsym: renvoie True si la carte du dessus et celle mentionnée ont le mm symbole
+estAs/estRoi: renvoie True si la carte est un As/Roi'''
+
 class Deck:
     def __init__(self):
         self.statut = "Rien"
         self.nom = None
+        self.cont=[]
 
     def empiler(self,carte):
-        self.append(carte)
+        return self.cont.append(carte)
 
-    def depiler(self):
-        self.cont.pop()
+    def cartetop(self):
+        return self.cont.pop()
 
+    def couleuropp(self,carte):      
+        return self.cartetop.couleur != carte.couleur
 
+    def mmsym(self,carte):
+        return self.cartetop.symbole == carte.symbole
 
+    def estAs(self):
+        return self.cartetop.valeur == 'As'
+
+    def estRoi(self):
+        return self.cartetop.valeur == 'Roi'
 
 
 class Carte:
@@ -109,14 +124,17 @@ class Carte:
         self.couleur = Couleur.c
         self.valeur = Valeur.v
         self.symbole = Symbole.s
+
 class Couleur:
     def __init__(self,c):
         self.c = c
-    nc=['coeur','trèfle','pique','carreau']
+    nc=['rouge','noir']
+
 class Valeur:
     def __init__(self,v):
         self.v = v
-    nv=['as',2,3,4,5,6,7,8,9,10,'Valet','Dame','Roi']
+    nv=['As',2,3,4,5,6,7,8,9,10,'Valet','Dame','Roi']
+
 class Symbole:
     def __init__(self,s):
         self.s = s
