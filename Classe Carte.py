@@ -61,7 +61,7 @@ class Solitaire:
         self.tableau_pile=[self.p_A,self.p_B,self.p_C,self.p_D,self.p_E,self.p_F,self.p_G]
         for colonne in range (2,14):
             #Label(text="{0}{1}".format(".",2619),fg="white",bg="white")
-            A_label=self.retourner_etiquette_carte(self.cadre)
+            A_label=self.retourner_etiquette_carte1(self.cadre)
             A_label.grid(column=colonne,row=2)
             self.p_A.append(A_label)
             B_label=self.retourner_etiquette_carte1(self.cadre)
@@ -122,22 +122,33 @@ class Deck:
 
 
 class Carte:
-    def __init__(self,couleur,valeur,symbole):
-        self.couleur = Couleur.c
-        self.valeur = Valeur.v
-        self.symbole = Symbole.s
-
+    def __init__(self,nom,symbole,valeur,lettre):
+        self.nom=nom
+        self.symbole=symbole
+        self.valeur = valeur
+        self.lettre = lettre
+        self.couleur=Attribuer_Couleur()
+        self.Attribuer_Symbole()
+    def Attribuer_Symbole(self):
+        if self.symbole == Symbole.Coeur:
+            self.symbolenum =
+        if self.symbole == Symbole.Carreau:
+            self.symbolenum =
+        if self.symbole == Symbole.Pique:
+            self.symbolenum =
+        if self.symbole == Symbole.Trefle:
+            self.symbolenum =
+        self.symbole = chr(int(str(self.symbolenum), 16))
 class Couleur:
-    def __init__(self,c):
-        self.c = c
-    nc=['rouge','noir']
-
-class Valeur:
-    def __init__(self,v):
-        self.v = v
-    nv=['As',2,3,4,5,6,7,8,9,10,'Valet','Dame','Roi']
+    Rouge="Rouge"
+    Noir="Noir"
+    Vide="Blanc"
+    Vide2="Blanc2"
 
 class Symbole:
-    def __init__(self,s):
-        self.s = s
-    ns=["coeur","trèfle","carreau","pique"]
+    Coeur="Coeur"
+    Carreau="Carreau"
+    Pique="Pique"
+    Trefle="Trefle"
+    Vide="Vide"
+    Vide2="Vide"
