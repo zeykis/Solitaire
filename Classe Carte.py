@@ -133,6 +133,8 @@ class Carte:
     def Attribuer_Couleur(self):
         if self.symbole==Symbole.Carreau or self.symbole==Symbole.Coeur:
             self.couleur=Couleur.Rouge
+        if self.symbole==Symbole.Pique or self.symbole==Symbole.Trefle:
+            self.couleur=Couleur.Noir
 
     def Attribuer_Symbole(self):
         if self.symbole == Symbole.Coeur:
