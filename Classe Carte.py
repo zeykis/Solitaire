@@ -1,4 +1,3 @@
-import sys
 import random
 from tkinter import *
 
@@ -84,6 +83,8 @@ class Solitaire:
             self.p_G.append(G_label)
         # Boutons pour les cartes nécessaire a la completion du jeu
          self.boutton_coeur=Button(self.cadre,text="Placer",command=self.objectif_coeur.changer)
+   
+   
     def retourner_etiquette_carte1(self,carte,cadre):
         return Label(cadre,text="{0}{1}".format(carte.lettre,carte.symbole),fg=carte.couleur,bg="white")
     def 
@@ -94,7 +95,7 @@ couleuropp: renvoie True si la couleur de la carte du dessus du deck est la mêm
 mmsym: renvoie True si la carte du dessus et celle mentionnée ont le mm symbole
 estAs/estRoi: renvoie True si la carte est un As/Roi'''
 
-class Deck:
+class Deck_de_cartes:
     def __init__(self):
         self.statut = "Rien"
         self.nom = None
@@ -120,6 +121,27 @@ class Deck:
     def estRoi(self):
         return self.cartetop.valeur == 'Roi'
 
+class Deck:
+    def __init__(self):
+        self.cartes = []
+        self.construireDeck()
+        self.melange = False
+        self.melangerDeck()
+    def construireDeck(self):
+        cartesNoms=["As","Deux"]
+        carteValeurs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        carteLettres = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "R"]
+        carteSymbole=[Symbole.Coeur]
+        for i in range(4):
+            temp=carteSymbole[i]
+            for j in range(13):
+                nouvelle_carte = Card(cartesNoms[j], temp, carteValeurs[j], carteLettres[j])
+                self.cartes.append(nouvelle_carte)
+
+
+
+
+
 
 class Carte:
     def __init__(self,nom,symbole,valeur,lettre):
@@ -127,7 +149,7 @@ class Carte:
         self.symbole=symbole
         self.valeur = valeur
         self.lettre = lettre
-        self.couleur=Attribuer_Couleur()
+        self.Attribuer_Couleur()
         self.Attribuer_Symbole()
 
     def Attribuer_Couleur(self):
@@ -135,22 +157,30 @@ class Carte:
             self.couleur=Couleur.Rouge
         if self.symbole==Symbole.Pique or self.symbole==Symbole.Trefle:
             self.couleur=Couleur.Noir
-
+        if self.symbole==Symbole.Vide:
+            self.couleur=Couleur.Blanc
+        if self.symbole==Symbole.Vide2:
+            self.couleur=Couleur.Marron
     def Attribuer_Symbole(self):
         if self.symbole == Symbole.Coeur:
-            self.symbolenum = U+2665
+            self.symbolenum = 2665
         if self.symbole == Symbole.Carreau:
-            self.symbolenum = U+2666
+            self.symbolenum = 2666
         if self.symbole == Symbole.Pique:
-            self.symbolenum = U+2660
+            self.symbolenum = 2660
         if self.symbole == Symbole.Trefle:
-            self.symbolenum = U+2663
+            self.symbolenum = 2663
+        if self.symbole==Symbole.Vide:
+            self.symbolenum = 2615
+        if self.symbole==Symbole.Vide2:
+            self.symbolenum = 2619
         self.symbole = chr(int(str(self.symbolenum), 16))
+
 class Couleur:
     Rouge="Rouge"
     Noir="Noir"
-    Vide="Blanc"
-    Vide2="Blanc2"
+    Blanc="Blanc"
+    Marron="Marron"
 
 class Symbole:
     Coeur="Coeur"
