@@ -146,9 +146,9 @@ class Couleur:
     Vide2="Blanc2"
 
 class Symbole:
-    Coeur="Coeur"
-    Carreau="Carreau"
-    Pique="Pique"
-    Trefle="Trefle"
+    Coeur=U+2665
+    Carreau=U+2666
+    Pique=U+2660
+    Trefle=U+2663
     Vide="Vide"
     Vide2="Vide"
