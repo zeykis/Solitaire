@@ -131,13 +131,13 @@ class Carte:
         self.Attribuer_Symbole()
     def Attribuer_Symbole(self):
         if self.symbole == Symbole.Coeur:
-            self.symbolenum =
+            self.symbolenum = U+2665
         if self.symbole == Symbole.Carreau:
-            self.symbolenum =
+            self.symbolenum = U+2666
         if self.symbole == Symbole.Pique:
-            self.symbolenum =
+            self.symbolenum = U+2660
         if self.symbole == Symbole.Trefle:
-            self.symbolenum =
+            self.symbolenum = U+2663
         self.symbole = chr(int(str(self.symbolenum), 16))
 class Couleur:
     Rouge="Rouge"
@@ -146,9 +146,9 @@ class Couleur:
     Vide2="Blanc2"
 
 class Symbole:
-    Coeur=U+2665
-    Carreau=U+2666
-    Pique=U+2660
-    Trefle=U+2663
+    Coeur="Coeur"
+    Carreau="Carreau"
+    Pique="Pique"
+    Trefle="Trefle"
     Vide="Vide"
     Vide2="Vide"
