@@ -1,3 +1,4 @@
+import sys
 import random
 from tkinter import *
 
@@ -89,19 +90,13 @@ class Solitaire:
         return Label(cadre,text="{0}{1}".format(carte.lettre,carte.symbole),fg=carte.couleur,bg="white")
     def 
            
-class Echange(Pile_de_cartes):
-    
-        
-'''empiler: ajouter une carte au deck, cartetop: enlève la carte du dessus du deck et la retourne 
-couleuropp: renvoie True si la couleur de la carte du dessus du deck est la même que celle mentionnée 
-mmsym: renvoie True si la carte du dessus et celle mentionnée ont le mm symbole
-estAs/estRoi: renvoie True si la carte est un As/Roi'''
 
 class Pile_de_cartes:
     def __init__(self):
         self.statut = "Rien"
         self.nom = None
-        self.cont=[]
+        self.cartes=[]
+        self.cartesenmvt
         self.bouton = None
         self.etiquette = None
 
@@ -115,7 +110,7 @@ class Pile_de_cartes:
         return self.cartetop.couleur != carte.couleur
 
     def mmsym(self,carte):
-        return self.cartetop.symbole == carte.symbole
+        return (self.cartes[0].symbole==self.arrive.symbole)
 
     def estAs(self):
         return self.cartetop.valeur == 'As'
@@ -123,12 +118,29 @@ class Pile_de_cartes:
     def estRoi(self):
         return self.cartetop.valeur == 'Roi'
 
+class Echange(Pile_de_cartes):
+    def __init__(self,depart):
+        Pile_de_cartes.__init__(self)
+        self.type=Pile.Echange
+        self.depart = depart
+        self.arrive = None
+        self.etat = Etat_echange.Inactif
+    def valider(self,cible):
+        if cible == Pile.Pile:
+            return self.valider_pile()
+        else:
+            self.valider_tableau()
+    def valider_pile(self):
+        if self.mmsym():
+
+
 class Deck:
     def __init__(self):
         self.cartes = []
         self.construireDeck()
         self.melange = False
         self.melangerDeck()
+
     def construireDeck(self):
         cartesNoms=["As","Deux"]
         carteValeurs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
@@ -139,6 +151,18 @@ class Deck:
             for j in range(13):
                 nouvelle_carte = Card(cartesNoms[j], temp, carteValeurs[j], carteLettres[j])
                 self.cartes.append(nouvelle_carte)
+
+    def print_deck(self):
+        for cartes in self.cartes:
+            print(cartes)
+
+    def melangerDeck(self):
+        for i in range(len(self.cartes)):
+            position=random.randint(0,len(self.cartes)-1)
+            temp=self.cards[position]
+            self.cartes[position] = self.cartes[i]
+            self.cartes[i] = temp
+        self.melange = True
 
 
 
@@ -163,6 +187,7 @@ class Carte:
             self.couleur=Couleur.Blanc
         if self.symbole==Symbole.Vide2:
             self.couleur=Couleur.Marron
+
     def Attribuer_Symbole(self):
         if self.symbole == Symbole.Coeur:
             self.symbolenum = 2665
@@ -184,6 +209,17 @@ class Couleur:
     Blanc="Blanc"
     Marron="Marron"
 
+class Etat_echange:
+    Actif = 1
+    Inactif = 0
+
+class Pile:
+    Pile = "P"
+    Tableau = "Tab"
+    Tirage = "T"
+    Renvoyer_une_carte = "R"
+    Echange = "E"
+
 class Symbole:
     Coeur="Coeur"
     Carreau="Carreau"
@@ -191,3 +227,8 @@ class Symbole:
     Trefle="Trefle"
     Vide="Vide"
     Vide2="Vide"
+
+
+if __name__=="__main__":
+    jouer=Solitaire(racine)
+    racine.mainloop()
