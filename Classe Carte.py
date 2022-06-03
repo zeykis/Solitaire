@@ -96,7 +96,7 @@ class Pile_de_cartes:
         self.statut = "Rien"
         self.nom = None
         self.cartes=[]
-        self.cartesenmvt
+        self.cartesenmvt = 1
         self.bouton = None
         self.etiquette = None
 
@@ -121,7 +121,7 @@ class Pile_de_cartes:
 class Echange(Pile_de_cartes):
     def __init__(self,depart):
         Pile_de_cartes.__init__(self)
-        self.type=Pile.Echange
+        self.type=Pile_cartes.Echange
         self.depart = depart
         self.arrive = None
         self.etat = Etat_echange.Inactif
@@ -214,7 +214,7 @@ class Etat_echange:
     Inactif = 0
 
 class Pile:
-    Pile = "P"
+    Pile_carte = "P"
     Tableau = "Tab"
     Tirage = "T"
     Renvoyer_une_carte = "R"
