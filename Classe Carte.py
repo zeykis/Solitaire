@@ -89,7 +89,7 @@ class Solitaire:
         return Label(cadre,text="{0}{1}".format(carte.lettre,carte.symbole),fg=carte.couleur,bg="white")
     def 
            
-class Echange(Deck_de_carte):
+class Echange(Pile_de_cartes):
     
         
 '''empiler: ajouter une carte au deck, cartetop: enlève la carte du dessus du deck et la retourne 
@@ -97,7 +97,7 @@ couleuropp: renvoie True si la couleur de la carte du dessus du deck est la mêm
 mmsym: renvoie True si la carte du dessus et celle mentionnée ont le mm symbole
 estAs/estRoi: renvoie True si la carte est un As/Roi'''
 
-class Deck_de_cartes:
+class Pile_de_cartes:
     def __init__(self):
         self.statut = "Rien"
         self.nom = None
