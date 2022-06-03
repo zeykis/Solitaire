@@ -89,7 +89,9 @@ class Solitaire:
         return Label(cadre,text="{0}{1}".format(carte.lettre,carte.symbole),fg=carte.couleur,bg="white")
     def 
            
-
+class Echange(Deck_de_carte):
+    
+        
 '''empiler: ajouter une carte au deck, cartetop: enlève la carte du dessus du deck et la retourne 
 couleuropp: renvoie True si la couleur de la carte du dessus du deck est la même que celle mentionnée 
 mmsym: renvoie True si la carte du dessus et celle mentionnée ont le mm symbole
