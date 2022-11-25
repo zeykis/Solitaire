@@ -1,0 +1,8 @@
+We will generate each map using wave funtion collapse algorithm.
+The map will be a n*m grid with each tile representing a room. 
+The location of a room will influence the type of other rooms in the map.
+For exemple, in the context of our game if you're located in a classroom then it eliminates the possibility 
+of ending up in another classroom when we exit the room. (Assuming classrooms are not linked together).
+There will be a limited number of rooms in the map and the algorithm will generate a map with a limited amount of rooms.
+The path between rooms will be generated randomly but with a limited number of tiles between rooms so as not to create a tremendously big map.
+It's important to note that the specific rules have not been defined yet and will be defined as we go along.
